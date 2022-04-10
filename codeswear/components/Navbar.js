@@ -23,7 +23,7 @@ const Navbar = ({cart,addToCart,removeFromCart,clearCart,subTotal}) => {
   }
   const ref=useRef()
   return (
-    <div className='flex flex-col md:flex-row md:justify-start justify-center items-center my-2 shadow-xl'>
+    <div className='flex flex-col md:flex-row md:justify-start justify-center items-center my-2 shadow-xl sticky  bg-white z-10'>
       <div className="logo mx-5"> 
       <Link href={"/"}>
        <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
@@ -43,7 +43,7 @@ const Navbar = ({cart,addToCart,removeFromCart,clearCart,subTotal}) => {
       <div onClick={toggleCart} className="cart absolute right-0 top-2 mx-5 cursor-pointer">
         <AiOutlineShoppingCart className=' text-xl md:text-3xl'/>
       </div>
-      <div ref={ref} className="w-72 h-full sideCart absolute top-0 right-0 bg-pink-50 px-8 py-10 transform transition-transform translate-x-full">
+      <div ref={ref} className={`w-72 h-[100vh] sideCart absolute top-0 right-0 bg-pink-50 px-8 py-10 transform transition-transform ${Object.keys(cart).length!==0?'translate-x-0':'translate-x-full'}`}>
         <h2 className="font-bold text-xl">Shopping cart</h2>
         <span onClick={toggleCart} className="absolute top-5 right-6 text-2xl cursor-pointer text-pink-500 "><AiFillCloseCircle/></span>
         <ol className='list-decimal font-semibold' >
@@ -51,12 +51,14 @@ const Navbar = ({cart,addToCart,removeFromCart,clearCart,subTotal}) => {
           { Object.keys(cart).map((k)=>{return <li key={k}>
             <div className='item flex my-3'>
             <div className='w-2/3 font-semibold '>{cart[k].name}</div>
-            <div className='flex font-semibold items-center justify-center w-1/3 text-lg' ><AiFillMinusCircle onClick={()=>removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].variant,cart[k].size)} className='cursor-pointer text-pink-500'/><span className='mx-2 text-sm'>{cart[k].qty}</span><AiFillPlusCircle className='cursor-pointer text-pink-500' /></div>
+            <div className='flex font-semibold items-center justify-center w-1/3 text-lg' ><AiFillMinusCircle onClick={()=>{removeFromCart(k,1,cart[k].price,cart[k].name,cart[k].variant,cart[k].size)}} className='cursor-pointer text-pink-500'/><span className='mx-2 text-sm'>{cart[k].qty}</span><AiFillPlusCircle onClick={()=>{addToCart(k,1,cart[k].price,cart[k].name,cart[k].variant,cart[k].size)}} className='cursor-pointer text-pink-500' /></div>
             </div>
           </li>})}
         </ol>
+        <div className='font-bold my-2'>subTotal:₹{subTotal}</div>
         <div className='flex'>
-        <button className=" cursor-pointer flex  mr-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"><BsFillBagCheckFill className='m-1'/> Checkout</button>
+        <Link href={'/checkout'}><a><button className=" cursor-pointer flex  mr-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"><BsFillBagCheckFill className='m-1'/> Checkout</button>
+</a></Link>
         <button onClick={clearCart} className=" cursor-pointer flex mr-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"> Clear Cart</button>
         </div>
        
