@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
   useEffect(() => {
-    console.log('hey i am a useeffect from app.js');
+    // console.log('hey i am a useeffect from app.js');
     try {
       if (localStorage.getItem('cart')) {
         setCart(JSON.parse(localStorage.getItem('cart')));
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       console.error(error);
       localStorage.clear();
     }
-  },[]);
+  });
 
   const saveCart = (myCart) => {
     localStorage.setItem('cart', JSON.stringify(myCart));

@@ -1,258 +1,55 @@
-import React from 'react'
-import Link from 'next/link'
-const Tshirts = () => {
+import React from 'react';
+import Link from 'next/link';
+import mongoose from 'mongoose';
+import Product from '../models/Product';
+const Tshirts = ({ products }) => {
   return (
     <div>
       <section className="text-gray-600 body-font">
-    <div className="container px-5 py-24 mx-auto ">
-      <div className="flex flex-wrap -m-4 justify-center">
-        
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
+        <div className="container px-5 py-24 mx-auto ">
+          <div className="flex flex-wrap -m-4 justify-center">
+            {products.map((item) => {
+              return (
+                <Link key={item._id} href={`/products/${item.slug}`}>
+                  <div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5 ">
+                    <a className="block relative  rounded overflow-hidden">
+                      <img
+                        alt="ecommerce"
+                        className="m-auto h-[30vh] md:h-[36vh]  block "
+                        src={item.img}
+                      />
+                    </a>
+                    <div className="mt-4 text-center md:text-left">
+                    <h2 className="text-gray-500 title-font text-sm font-medium">
+                        {item.category}
+                      </h2>
+                      <h2 className="text-gray-900 title-font text-lg font-medium">
+                        {item.title}
+                      </h2>
+                      <p className="mt-1">₹{item.price}</p>
+                      <p className="mt-1">{item.size}</p>
+                      <p className='mt-1'>{item.color}</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link>       
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        <Link href={'/products/wear-the-code'}><div className="lg:w-1/5 md:w-1/2 p-4 w-full cursor-pointer shadow-lg m-5">
-          <a className="block relative  rounded overflow-hidden">
-            <img alt="ecommerce" className="m-auto md:mx-0  block " src="https://m.media-amazon.com/images/I/61pdK+XF7QL._UX679_.jpg"/>
-          </a>
-          <div className="mt-4 text-center md:text-left">
-            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-shirts</h3>
-            <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-            <p className="mt-1">₹499</p>
-            <p className="mt-1">S M L XL XXL</p>
-          </div>
-        </div>
-        </Link> 
-        
-      </div>
+      </section>
     </div>
-  </section>
-  </div>
-  )
+  );
+};
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGODB_URI);
+  }
+  let products = await Product.find();
+
+  return {
+    props: { products: JSON.parse(JSON.stringify(products)) },
+  };
 }
 
-export default Tshirts
+export default Tshirts;
